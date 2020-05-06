@@ -1,0 +1,45 @@
+1）下载wxWidgets库
+https://www.wxwidgets.org/downloads/
+选择source code 里面的windows 7z
+完了解压打开目录 xxx\wxWidgets-3.1.1\build\msw
+双击wx_vc15.sln
+平台选release Dll win32
+然后生成
+把 xxx\wxWidgets-3.1.1\lib\vc_dll 添加到环境变量里面去
+2）下载zlib库
+http://www.zlib.net/
+点击这个 Pick a mirror (prdownloads.sourceforge.net)
+完了解压打开目录 XXX\zlib-1.2.11\win32
+用记事本打开Makefile.msc
+打开Visual Studio的x86 Native Tools Command Prompt for VS2019
+进入到XXX\zlib-1.2.11的目录地下
+运行命令 nmake -f win32/Makefile.msc LOC="-DASMV -DASMINF" OBJA="inffas32.obj match686.obj"
+把XXX\zlib-1.2.11添加到环境变量中
+3）下载audacity
+https://www.fosshub.com/Audacity.html
+完了解压打开目录 XXX\audacity\win
+双击audacity.sln，平台选择release win32
+右击Audacity工程->VC++目录->包含目录 中添加
+XXX\wxWidgets-3.1.1\include;
+XXX\wxWidgets\wxWidgets-3.1.1\lib\vc_dll\mswu;
+右击Audacity工程->VC++目录->库目录 中添加
+XXX\wxWidgets-3.1.1\lib\vc_dll;
+XXX\zlib-1.2.11;
+
+右击filedialog工程->VC++目录->包含目录 中添加
+XXX\wxWidgets-3.1.1\include;
+XXX\wxWidgets\wxWidgets-3.1.1\lib\vc_dll\mswu;
+右击filedialog工程->VC++目录->库目录 中添加
+XXX\wxWidgets-3.1.1\lib\vc_dll;
+
+右击libid3tag工程->VC++目录->包含目录 中添加
+XXX\zlib-1.2.11;
+右击libid3tag工程->VC++目录->库目录 中添加
+XXX\zlib-1.2.11;
+
+然后全部生成，运行。
+
+
+
+
+
