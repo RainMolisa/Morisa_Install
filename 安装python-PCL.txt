@@ -1,0 +1,12 @@
+conda install cython
+https://github.com/strawlab/python-pcl
+https://structure.io/openni(这个下面会自带)
+https://github.com/PointCloudLibrary/pcl/releases（https://github.com/PointCloudLibrary/pcl/tags）(镜像github.wuyanzheshui.workers.dev)
+
+
+
+
+
+
+
+
