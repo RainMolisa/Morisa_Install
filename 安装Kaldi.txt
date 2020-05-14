@@ -1,0 +1,11 @@
+1）下载https://github.com/kkm000/openfst
+	打开openfst.sln编译
+2）下载http://www.portaudio.com/download.html
+	打开msvc/portaudio.sln
+	下面是去除asio的支持：
+		删除解决方案中的asio文件夹
+		找到portaudio.def 删除asio相关项
+	然后编译
+	
+	
+	
