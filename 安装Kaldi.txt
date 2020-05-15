@@ -1,11 +1,62 @@
-1）下载https://github.com/kkm000/openfst
+1）https://github.com/kaldi-asr/kaldi
+2）下载https://github.com/kkm000/openfst
 	打开openfst.sln编译
-2）下载http://www.portaudio.com/download.html
+3）下载http://www.portaudio.com/download.html
 	打开msvc/portaudio.sln
 	下面是去除asio的支持：
 		删除解决方案中的asio文件夹
 		找到portaudio.def 删除asio相关项
 	然后编译
 	
-	
-	
+4）安装OpenBLAS
+	http://sourceforge.net/projects/openblas/files/v0.2.14/OpenBLAS-v0.2.14-Win64-int32.zip
+	解压
+	下载https://sourceforge.net/projects/mingw/files/MinGW/Extension/pexports/pexports-0.47/的pexports-0.47-mingw32-bin.tar.xz
+	解压后得到pexports.bin然后把这个exe拷贝到C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin
+	把C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin添加到环境变量中
+	打开cmd 然后cd到XXX\OpenBLAS-v0.2.14-Win64-int32\bin中
+		pexports libopenblas.dll -o > libopenblas.def
+		lib /DEF:libopenblas.def /MACHINE:IX86 /OUT:libopenblas.lib
+		lib /DEF:libopenblas.def /MACHINE:X64 /OUT:libopenblas64.lib
+	添加D:\jhh\githubsrc\OpenBLAS\OpenBLAS-v0.2.14-Win64-int32\bin到环境变量
+	然后测试一下：
+		下面是测试代码：
+			见附录1
+		包含目录：D:\jhh\githubsrc\OpenBLAS\OpenBLAS-v0.2.14-Win64-int32\include
+		库目录：D:\jhh\githubsrc\OpenBLAS\OpenBLAS-v0.2.14-Win64-int32\bin
+		附加依赖项：libopenblas64.lib
+		
+5）
+		
+
+
+
+
+
+
+
+
+
+
+附录1：
+extern "C" {
+#include <cblas.h>
+}
+#include <iostream>
+
+int main() {
+	float a[1] = { 2 };
+	float b[1] = { 3 };
+	float c[1] = { 0 };
+	cblas_sgemm(CblasRowMajor,
+		CblasNoTrans, CblasNoTrans,
+		1, 1, 1,
+		1,
+		a, 1,
+		b, 1,
+		0,
+		c, 1);
+	std::cout << *c << std::endl;
+	system("pause");
+	return 0;
+}
