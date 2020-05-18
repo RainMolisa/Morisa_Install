@@ -27,9 +27,14 @@
 		库目录：D:\jhh\githubsrc\OpenBLAS\OpenBLAS-v0.2.14-Win64-int32\bin
 		附加依赖项：libopenblas64.lib
 		
-5）
-		
-
+5）安装cuda（有的跳过）
+	https://developer.nvidia.com/cuda-downloads?target_os=Windows&target_arch=x86_64&target_version=10&target_type=exenetwork
+	双击cuda_10.2.89_win10_network.exe安装
+	环境变量添加：
+		C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.2\libnvvp;
+		C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.2\bin;
+	然后VS新建项目CUDA 10.2 Runtime运行观察是否成功
+6）
 
 
 
