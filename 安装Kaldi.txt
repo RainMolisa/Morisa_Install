@@ -34,13 +34,21 @@
 		C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.2\libnvvp;
 		C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.2\bin;
 	然后VS新建项目CUDA 10.2 Runtime运行观察是否成功
-6）
+6）	安装 https://www.activestate.com/products/perl
+7） 把 variables.props.dev复制一遍更名为 variables.props
+	把 kaldiwin_openblas.props复制一遍更名为 kaldiwin.props
+	打开 variables.props修改各个路径。例子见附录2.
+	打开 openfstwin_release.props修改路径
+		尤其是AdditionalDependencies里的fst.lib改成libfst.lib
+8） 无cuda版编译
+	CMD里执行 perl generate_solution.pl --vsver vs2017 --enable-openblas
+	然后打开\kaldiwin_vs2017_OPENBLAS\kaldiwin_vs2017.sln
+	切到release x64然后编译
+	结果会有19个失败都是和cuda相关。
 
 
 
-
-
-
+perl generate_solution.pl --vsver vs2017 --enable-cuda --enable-openblas
 
 
 
@@ -66,3 +74,14 @@ int main() {
 	system("pause");
 	return 0;
 }
+
+
+附录2：
+	<MKLDIR>C:\Program Files (x86)\IntelSWTools\compilers_and_libraries\windows\mkl\</MKLDIR>
+    <OPENBLASDIR>D:\jhh\githubsrc\OpenBLAS\OpenBLAS-v0.2.14-Win64-int32</OPENBLASDIR>
+    <OPENFST>D:\jhh\githubsrc\openfst-winport\</OPENFST>
+    <OPENFSTLIB>D:\jhh\githubsrc\openfst-winport\build_output</OPENFSTLIB>
+    <CUBDIR>C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.2\include\thrust\system\cuda\detail</CUBDIR>
+    <PORTAUDIO>D:\jhh\githubsrc\portaudio</PORTAUDIO>
+    <PORTAUDIOLIB>D:\jhh\githubsrc\portaudio\build\msvc\x64\Release</PORTAUDIOLIB>
+    <NVTOOLSDIR>C:\Program FIles\NVIDIA Corporation\NvToolsExt</NVTOOLSDIR>
